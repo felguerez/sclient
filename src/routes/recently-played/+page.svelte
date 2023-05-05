@@ -1,6 +1,5 @@
 <script lang="ts">
   import {createQuery} from '@tanstack/svelte-query'
-  import RecentlyPlayed from "$lib/RecentlyPlayed.svelte";
   import TopItems from "../../lib/TopItems.svelte";
 
   type Response = { name: string; artists: { name: string }[] }[]
@@ -11,7 +10,14 @@
     queryFn: async () => (await fetch(url)).json()
   });
 </script>
-<h1>Recently played</h1>
+<h1>Antonio Felguerez recently played</h1>
+<div class="menu-container">
 <a href="/">back</a>
-<!--<RecentlyPlayed data={$items.data}/>-->
+</div>
 <TopItems entity="recent-tracks" data={$items.data}  />
+
+<style>
+    .menu-container {
+        padding-bottom: 1rem;
+    }
+</style>
