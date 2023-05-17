@@ -3,7 +3,7 @@ import type {PageLoad} from './$types'
 export const load: PageLoad = async ({parent, fetch}) => {
   const {queryClient} = await parent()
 
-  const url = "http://localhost:8080/api/spotify/recently-played";
+  const url = "http://localhost:8080/api/spotify/currently-playing";
   return queryClient.prefetchQuery({
     queryKey: ['recently-played'],
     queryFn: async () => (await fetch(url)).json()

@@ -2,8 +2,9 @@
   import TopItems from "$lib/TopItems.svelte";
   import {get} from "svelte/store";
   import {page} from "$app/stores";
+  import ListeningNavigation from "$lib/ListeningNavigation.svelte";
 
-  export let data: any; // Ideally you should replace `any` with the actual type of your data
+  export let data: any;
 
   let error: Error | null = null;
 
@@ -11,27 +12,36 @@
     if (!data) {
       error = new Error('Data not loaded');
     }
+    console.log('data:', data)
   }
-  const { url } = get(page);
-  export let timeRange = url.searchParams.get('time_range') || 'medium_term';
+  export let timeRange = '';
+  $: {
+    const {url} = get(page);
+    timeRange = url.searchParams.get('time_range') || 'medium_term';
+  }
 
 </script>
+<div class="menu-container">
+    <ListeningNavigation/>
 
-<h1>Antonio Felguerez's top {data.entity}</h1>
-<p>for <strong>{timeRange.replace('_', ' ')}</strong> period.</p>
+</div>
+<h2>top {data.entity}</h2>
 
 {#if error}
     <p>Error: {error.message}</p>
-{:else if !data.data.items?.length}
+{:else if !data || !data?.data || !data?.data?.items?.length }
     <p>Loading...</p>
 {:else}
+    {@const timeRange = $page.url.searchParams.get("time_range")}
     <div class="menu-container">
         <p>
-            <a href="?time_range=short_term">short term</a> |
-            <a href="?time_range=medium_term">medium term</a> |
-            <a href="?time_range=long_term">long term</a>
+            <a class:active="{timeRange === 'short_term'}"
+               href={`/top/${data.entity}?time_range=short_term`}>short term</a> |
+            <a class:active="{timeRange === 'medium_term' || timeRange === null}"
+               href={`/top/${data.entity}?time_range=medium_term`}>medium term</a> |
+            <a class:active="{timeRange === 'long_term'}"
+               href={`/top/${data.entity}?time_range=long_term`}>long term</a>
         </p>
-        <p><a href="/">go back</a></p>
     </div>
     <TopItems entity={data.entity} data={data.data}/>
 {/if}
@@ -39,5 +49,14 @@
 <style>
     .menu-container {
         padding-bottom: 1rem;
+    }
+
+    a {
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #242424;
+    }
+
+    .active {
+        border-color: inherit;
     }
 </style>
