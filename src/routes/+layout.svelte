@@ -18,5 +18,8 @@
   main {
     margin: 1rem auto;
     max-width: 960px;
+    @media (max-width: 976px) {
+      margin: 1rem;
+    }
   }
 </style>

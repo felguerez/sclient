@@ -12,7 +12,6 @@
     if (!data) {
       error = new Error('Data not loaded');
     }
-    console.log('data:', data)
   }
   export let timeRange = '';
   $: {
@@ -52,8 +51,9 @@
     }
 
     a {
+        transition: color 300ms ease, border-bottom-color 500ms ease;
         padding-bottom: 0.5rem;
-        border-bottom: 2px solid #242424;
+        border-bottom: 2px solid var(--indigo);
     }
 
     .active {
