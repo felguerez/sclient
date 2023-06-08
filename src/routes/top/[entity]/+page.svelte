@@ -4,6 +4,8 @@
   import {page} from "$app/stores";
   import ListeningNavigation from "$lib/ListeningNavigation.svelte";
 
+  export const prerender = false;
+
   export let data: any;
 
   let error: Error | null = null;

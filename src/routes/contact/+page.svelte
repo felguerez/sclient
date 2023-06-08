@@ -2,9 +2,10 @@
     let from = '';
     let subject = '';
     let message = '';
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
     async function handleSubmit() {
-        const response = await fetch('http://localhost:8080/email', {
+        const response = await fetch(`${baseUrl}/email`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,10 +29,10 @@
     <input id="from" bind:value={from} type="text" required placeholder="your@email.com"/>
 
     <label for="subject">Subject:</label>
-    <input id="subject" bind:value={subject} type="text" required placeholder="hey, cool page" />
+    <input id="subject" bind:value={subject} type="text" required placeholder="hey, cool page"/>
 
     <label for="message">Message:</label>
-    <textarea id="message" bind:value={message} required placeholder="let's work together!" ></textarea>
+    <textarea id="message" bind:value={message} required placeholder="let's work together!"></textarea>
 
     <button type="submit">Email me</button>
 </form>

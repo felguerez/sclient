@@ -86,14 +86,13 @@
 <div class="main">
     <div class="spotify-summary">
         <h2>Work</h2>
-        <p>I currently work at Spotify on a team building the audiobooks listener experience. I'm a Web Engineer but I
+        <p>I work on a team building the audiobooks listener experience at Spotify. I'm a Web Engineer but I
             spend a lot of time on the backend.</p>
-        <h3>Spotify</h3>
         <p class="tenure">May 2019 &ndash; present ({calculateYearsAndMonths(new Date("2019-05-22"))})</p>
         <p>When I joined Spotify I began working on anchor.fm, now called <a href="https://podcasters.spotify.com"
                                                                              target="_blank" rel="noreferrer nofollow">Spotify
             for
-            Podcasters</a>. From May 2019 to May 2022, we experienced hyper-growth in creators, content, and
+            Podcasters</a>. From May 2019 to May 2022, we saw hyper-growth in creators, content, and
             engineering headcount. A
             lot of my work is still in production and continues to power features like polls, Q&A, and Music + Talk.
             Spotify for Podcasters continues to power 80% of all podcasts on Spotify and is the largest podcast creator
@@ -106,21 +105,21 @@
                 class="citation"
                 id="citation-0-ref"><a
                 href="#citation-0">[1]</a></span></sup>. It was a big achievement and an exciting milestone to launch a
-            high-profile product in a high-impact part of the business. The audiobooks experience relies on web
-            surfaces extensively, which I had the
-            privilege of leading and producing. </p>
-        <p>I've acquired lots of technical, practical skills being on a growing team with a successful product and a large user base. Since joining {calculateYears(new Date("2019-05-22"))} ago I've
+            product with a high impact on the business. The experience relies heavily on web
+            surfaces, which I had the privilege of leading and producing. </p>
+        <p>Since joining {calculateYears(new Date("2019-05-22"))} ago I've
             built internal
-            tools, creator tools, listener frontends, and backend systems. My role's flexibility helped me achieve a truly "full-stack" skill-set.</p>
+            tools, creator tools, listener frontends, and backend systems. My role's flexibility helped me build a
+            truly "full-stack" skill-set.</p>
     </div>
     <div>
-        <h4>Senior Engineer</h4>
+        <h4 class="title">Senior Engineer</h4>
         <p class="tenure">January 2022 &ndash; present ({calculateYearsAndMonths(new Date("2022-01-01"))})</p>
         <ul>
             <li>Top-secret project, current</li>
             <li>Road Manager (web), Audiobooks launch, September 2022</li>
         </ul>
-        <h4>Web Engineer, anchor.fm</h4>
+        <h4 class="title">Web Engineer, anchor.fm</h4>
         <p class="tenure">May 2019 &ndash; January 2022
             ({calculateYearsAndMonths(new Date("2019-05-22"), new Date("2022-01-01"))})</p>
         <ul>
@@ -146,12 +145,21 @@
 </div>
 
 <style>
-    .main {
+    .main, .citations {
         max-width: 720px;
     }
 
     .spotify-summary {
         padding-bottom: 1rem;
+    }
+
+    .spotify {
+        font-family: "Circular Sp", "Helvetica", "Arial", SansSerif;
+    }
+
+    .title {
+        margin-bottom: 0.5rem;
+        /*font-size: 1.125rem;*/
     }
 
     .tenure {

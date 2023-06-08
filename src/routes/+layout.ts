@@ -13,3 +13,5 @@ export const load: LayoutLoad = async () => {
 
   return { queryClient }
 }
+
+export const prerender = true;

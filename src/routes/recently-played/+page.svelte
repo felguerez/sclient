@@ -4,7 +4,8 @@
   import ListeningNavigation from "$lib/ListeningNavigation.svelte";
 
   type Response = { name: string; artists: { name: string }[] }[]
-  const url = "http://localhost:8080/api/spotify/recently-played";
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const url = `${baseUrl}/api/spotify/recently-played`;
   // This data is cached by prefetchQuery in +page.ts so no fetch actually happens here
   const items = createQuery<Response>({
     queryKey: ['recently-played'],

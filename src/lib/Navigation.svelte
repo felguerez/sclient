@@ -4,7 +4,8 @@
   import {writable} from "svelte/store";
 
   type Response = { name: string; artists: { name: string }[] }[]
-  const url = "http://localhost:8080/api/spotify/currently-playing";
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const url = `${baseUrl}/api/spotify/currently-playing`;
   export let query = createQuery<Response>({
     queryKey: ['currently-playing'],
     queryFn: async () => (await fetch(url)).json()
