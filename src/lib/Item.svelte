@@ -58,7 +58,7 @@
             {#each item.album?.artists as artist}
                 {@const href = artist?.external_urls?.spotify}
                 <a {href} target="_blank" class="raised">
-                    <strong class="artist">{artist?.name}{item.album.artists.length > 1 && index < item.artists.length - 1 ? ', ' : ''}</strong>
+                    <strong class="artist">{artist?.name}{item.album.artists.length > 1 && index < item.album.artists.length - 1 ? ', ' : ''}</strong>
                 </a>
             {/each}
         </p>
