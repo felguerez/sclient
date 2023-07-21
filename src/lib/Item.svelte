@@ -58,7 +58,7 @@
             {#each item.album?.artists as artist}
                 {@const href = artist?.external_urls?.spotify}
                 <a {href} target="_blank" class="raised">
-                    <strong class="artist">{artist?.name}{item.album.artists.length > 1 && index < item.items.length - 1 ? ', ' : ''}</strong>
+                    <strong class="artist">{artist?.name}{item.album.artists.length > 1 && index < item.artists.length - 1 ? ', ' : ''}</strong>
                 </a>
             {/each}
         </p>
@@ -113,6 +113,7 @@
     max-width: 550px;
     height: auto;
     border-radius: 5px;
+
     p:last-of-type {
       margin-bottom: 0;
     }
@@ -133,6 +134,7 @@
 
   .artist {
     color: var(--chartreuse);
+
     &:hover {
       color: var(--mint)
     }
@@ -142,8 +144,9 @@
     color: var(--mint);
     opacity: 1;
     z-index: 999;
+
     &:hover {
-      color:var(--chartreuse)
+      color: var(--chartreuse)
     }
   }
 </style>
