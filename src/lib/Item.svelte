@@ -1,5 +1,7 @@
 <script lang="ts">
-  export let entity = "artists";
+  import type { Entity } from "../routes/top/[entity]/types";
+
+  export let entity: Entity = "artists";
   const handleMouseMove = (event) => {
     const {target, pageX, pageY} = event;
     const x = pageX - target.offsetLeft;
@@ -55,10 +57,10 @@
     <div class="item" style="background-image: url({image})" on:mousemove={handleMouseMove}>
         <p class="raised">
             <a {href} class="shadowed"><span class="raised name">{item.name}</span></a> by
-            {#each item.album?.artists as artist}
+            {#each item.album?.artists as artist, aIndex}
                 {@const href = artist?.external_urls?.spotify}
                 <a {href} target="_blank" class="raised">
-                    <strong class="artist">{artist?.name}{item.album.artists.length > 1 && index < item.album.artists.length - 1 ? ', ' : ''}</strong>
+                    <strong class="artist">{artist?.name}{aIndex < item.album.artists.length - 1 ? ', ' : ''}</strong>
                 </a>
             {/each}
         </p>

@@ -1,0 +1,30 @@
+@function reverse($list) {
+  $length: length($list);
+  $result: ();
+  // scss arrays start at 1
+  @for $i from $length through 1 {
+    $result: append($result, nth($list, $i));
+  }
+
+  @return $result;
+}
+
+@function join($list1, $list2) {
+  $result: $list1;
+
+  @each $item in $list2 {
+    $result: append($result, $item);
+  }
+
+  @return $result;
+}
+
+@function shift($list) {
+  $result: ();
+  // scss arrays start at 1
+  @for $i from 2 through length($list) {
+    $result: append($result, nth($list, $i));
+  }
+
+  @return $result;
+}
